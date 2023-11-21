@@ -1,50 +1,67 @@
 #include<stdio.h>
 #include<math.h>
+#define SALARIO_BASE 600
 
-    double validaQuantidade(){
-        int pecas;
-        float bonus1 = 0, bonus2 = 0;
+    
+    float calculoSalario(int bonus, int pecas){
+        float salarioBonus;
 
-        printf("Digite a quantidade de pecas vendidas por esse funcionario.");
-        scanf("%d", &pecas);
+        if (bonus == 1)
+        {
+            salarioBonus = (pecas - 80) * 0.75 + (30 * 0.5);
+        }
+        else
+        {
+            salarioBonus = (pecas - 50) * 0.5;
+        }
 
-        getchar();
+        return salarioBonus;
+    }
+    
+    
+    int validaQuantidade(int pecas){
+        int bonus;
 
         if (pecas < 50)
         {
             printf("O funcionario nao tera bonus. Seu salario sera de R$600.");
             return;
         }
-        else if (pecas)
+        else if (pecas > 50 && pecas < 80)
         {
-            bonus1 = 0.5;
+            bonus = 2;
         }
         else if (pecas > 80)
         {
-            bonus2 = 0.75;
-            bonus1 = 0.5;
+            bonus = 1;
         }
 
-        calculoSalario(pecas, bonus1, bonus2);
+        return bonus;
         
     }
 
-    float calculoSalario
-
-
 
 int main(){
-    float salarioBase = 600;
-    int opcao;
+    int opcao, pecas, bonus;
+    float salarioBonus;
     
     do
     {
-        printf("Digite 1 - Novo calculo de salario\nDigite 2 - Encerrar operacao.");
-    scanf("%d", &opcao);
+        printf("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\nDigite 1 - Novo calculo de salario\nDigite 2 - Encerrar operacao.\n");
+        scanf("%d", &opcao);
 
     if (opcao == 1)
     {
-        validaQuantidade();
+         printf("Digite a quantidade de pecas vendidas por esse funcionario.\n");
+        scanf("%d", &pecas);
+
+        getchar();
+
+        bonus = validaQuantidade(pecas);
+
+        salarioBonus = calculoSalario(bonus, pecas);
+
+        printf("O valor do salario final e %.2f reais.\n", salarioBonus + SALARIO_BASE);
     }
     else if (opcao == 2)
     {
@@ -52,9 +69,9 @@ int main(){
     }
     else
     {
-        printf("O valor digitado e invalido.");
+        printf("O valor digitado e invalido.\n");
     }
-    } while (opcao == 2);
+    } while (opcao != 2);
     
     
     
