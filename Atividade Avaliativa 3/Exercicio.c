@@ -120,22 +120,26 @@ Produto* excluirProduto(Produto *lista, int codigo){
     anterior = NULL;
     atual = lista;
 
-    while(atual->codigo != codigo){
+    while(atual->codigo != NULL){
+        if (atual->codigo != codigo)
+        {
+            if (anterior == NULL)
+            {
+                lista = atual->prox;
+                free(atual);
+            }
+            else
+            {
+                anterior = atual->prox;
+                free(atual);
+
+            }
+        }
+        
             anterior = atual;
             atual = atual->prox;
         }
 
-    if (anterior == NULL)
-    {
-        lista = atual->prox;
-    }
-    else
-    {
-        anterior = atual->prox;
-
-    }
-    
-    free(atual);
     return lista;
 }
 
