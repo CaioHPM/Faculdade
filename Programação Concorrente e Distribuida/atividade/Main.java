@@ -9,7 +9,7 @@ import java.time.Duration;
 public class Main {
     public static void main(String[] args) {
         Instant inicio = Instant.now();
-        String caminhoDaPasta = "C:\\Users\\caio.hmarques\\eclipse-workspace\\atividadeAvaliativa\\src\\cpfs";
+        String caminhoDaPasta = "C:\\Users\\caio.hmarques\\eclipse-workspace\\atividadeAvaliativa\\src\\cpfs"; // Mudar de acordo com a necessidade
         List<String> cpfs = LeitorDeArquivos.listarCPFsNaPasta(caminhoDaPasta);
         
         int numeroDeThreads = 3; // Digite o valor de Threads desejado
